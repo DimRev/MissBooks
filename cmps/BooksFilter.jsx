@@ -17,21 +17,21 @@ export function BooksFilter({ filterBy, onSetFilter }) {
     let value = target.value
 
     switch (target.type) {
-        case 'number':
-        case 'range':
-            value = +value
-            break;
+      case 'number':
+      case 'range':
+        value = +value
+        break
 
-        case 'checkbox':
-            value = target.checked
-            break
+      case 'checkbox':
+        value = target.checked
+        break
 
-        default:
-            break;
+      default:
+        break
     }
 
-    setFilterByToEdit(prevFilter => ({ ...prevFilter, [field]: value }))
-}
+    setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
+  }
 
   return (
     <section className="books-filter">

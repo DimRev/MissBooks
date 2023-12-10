@@ -65,10 +65,7 @@ export function BookDetails({ bookId, unselectBook }) {
       <h3 className="book-categories">Categories : {categories}</h3>
       <h3 className="book-language">Language : {language}</h3>
       <img src={thumbnail} alt={title} />
-      <h2
-        className={`book-price ${priceColorClass(
-          priceAmount
-        )}`}>
+      <h2 className={`book-price ${priceColorClass(priceAmount)}`}>
         Price : {price}
       </h2>
       <button onClick={unselectBook}>Back</button>

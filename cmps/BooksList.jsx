@@ -1,6 +1,5 @@
 import { BookPreview } from './BookPreview.jsx'
 export function BooksList({ books, onSelectBook }) {
-
   return (
     <ul className="books-list clean-list">
       {books.map((book) => {

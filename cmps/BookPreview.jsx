@@ -15,7 +15,7 @@ export function BookPreview({ book }) {
 
   function isOnSaleClass(isOnSale) {
     if (isOnSale) {
-      return'sale-book'
+      return 'sale-book'
     } else {
       return ''
     }

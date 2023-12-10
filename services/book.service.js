@@ -392,7 +392,9 @@ function query() {
       books = books.filter((book) => regex.test(book.title))
     }
     if (gFilterBy.listPrice) {
-      books = books.filter((book) => book.listPrice.amount >= gFilterBy.listPrice)
+      books = books.filter(
+        (book) => book.listPrice.amount >= gFilterBy.listPrice
+      )
     }
     return books
   })
@@ -469,4 +471,3 @@ const book = {
     },
 }
 */
-

@@ -1,12 +1,12 @@
-.books-filter form{
+.books-filter form {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   align-content: center;
 
-  gap: .3em;
+  gap: 0.3em;
 }
 
-.books-filter :is(label,input) {
+.books-filter :is(label, input) {
   grid-column: span 2;
 }
 

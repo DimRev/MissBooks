@@ -2,7 +2,6 @@
   position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-
 }
 
 .book-details img {
@@ -18,7 +17,7 @@
   text-align: center;
 }
 
-.book-details .book-subtitle { 
+.book-details .book-subtitle {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-transform: uppercase;
 
@@ -34,7 +33,7 @@
 
 .book-details :is(.book-date, .book-pages, .book-categories, .book-language) {
   color: var(--gray2);
-  font-size: .9em;
+  font-size: 0.9em;
   align-self: center;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
@@ -51,7 +50,7 @@
   content: 'On Sale!';
   font: 1em Impact;
   color: white;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,6 +58,6 @@
   width: 120px;
   height: 30px;
   background-color: red;
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .5);
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
   scale: 2.2;
 }
