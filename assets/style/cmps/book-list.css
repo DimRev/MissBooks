@@ -1,0 +1,18 @@
+.books-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  align-items: center;
+
+  font-size: .9em;
+
+  gap: 0.8em;
+  padding: 0.5em;
+  
+  width: 100%;
+}
+
+.books-list button { 
+  width: 100%;
+  margin-inline: auto;
+}
+

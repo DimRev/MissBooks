@@ -1,0 +1,66 @@
+.book-preview {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  overflow: hidden;
+}
+
+
+
+.book-preview :is(img, .book-title, .book-authors) {
+  grid-column: 1/-1;
+}
+
+.book-preview h2 {
+  font-size: 1.2em;
+  
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.book-preview .book-price {
+  justify-self: flex-end;
+  margin-inline-end: 1em;
+  color: var(--gray2);
+}
+
+.book-preview :is(.book-date, .book-authors) {
+  margin-inline: 1em;
+  color: var(--gray2);
+}
+
+.book-preview .book-title {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-transform: uppercase;
+}
+
+.book-preview :is(.book-title, .book-authors) {
+  font-size: 1.2em;
+  font-weight: 700;
+}
+
+.book-preview button {
+  justify-self: center;
+}
+
+.sale-book::after {
+  z-index: 10;
+  content: 'On Sale!';
+  font: 1em Impact;
+  color: white;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 10rem;
+  left: .5rem;
+  rotate: -33.33deg;
+  width: 120px;
+  height: 30px;
+  background-color: red;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .5);
+}

@@ -2,7 +2,7 @@ import { BookPreview } from './BookPreview.jsx'
 export function BooksList({ books, onSelectBook }) {
 
   return (
-    <section className="books-list">
+    <ul className="books-list clean-list">
       {books.map((book) => {
         return (
           <li key={book.id}>
@@ -16,6 +16,6 @@ export function BooksList({ books, onSelectBook }) {
           </li>
         )
       })}
-    </section>
+    </ul>
   )
 }
