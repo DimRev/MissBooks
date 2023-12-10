@@ -1,7 +1,7 @@
 import { utilService } from './util.service.js'
 import { storageService } from './async-storage.service.js'
 
-const BOOK_KEY = 'carDB'
+const BOOK_KEY = 'bookDB'
 var gFilterBy = { txt: '', minSpeed: 0 }
 _createBooks()
 
@@ -82,7 +82,7 @@ function _createBooks() {
 
 function _createBook(title, listPrice = 250) {
   //TODO : change the after changing getEmptyBook data structure change the args of the func
-  // const book = getEmptyBook(vendor, maxSpeed)
+  const book = getEmptyBook(title, listPrice)
   book.id = utilService.makeId()
   return book
 }

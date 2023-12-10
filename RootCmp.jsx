@@ -1,4 +1,5 @@
 import { Home } from './pages/Home.jsx'
+import { bookService } from './services/book.service.js'
 
 export function App() {
     return (
@@ -14,9 +15,7 @@ export function App() {
                 </nav>
             </section>
             <main>
-                <section className="home-section">
-                    
-                </section>
+                <Home />
                 <section className="about-us-page">
 
                 </section>
