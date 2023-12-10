@@ -1,0 +1,16 @@
+.books-filter form{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-content: center;
+
+  gap: .3em;
+}
+
+.books-filter :is(label,input) {
+  grid-column: span 2;
+}
+
+.books-filter button {
+  grid-column: 1/-1;
+  grid-row: 3;
+}
