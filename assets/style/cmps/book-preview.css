@@ -46,7 +46,7 @@
   justify-self: center;
 }
 
-.sale-book::after {
+.book-preview.sale-book::after {
   z-index: 10;
   content: 'On Sale!';
   font: 1em Impact;

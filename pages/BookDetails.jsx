@@ -46,32 +46,32 @@ export function BookDetails({ bookId, unselectBook }) {
   }
 
   function isOnSaleClass(isOnSale) {
-    if (isOnSale) return 'on-sale'
+    if (isOnSale) return 'sale-book'
     return ''
   }
 
   return (
-    <section className="book-details">
-      <h2>{title}</h2>
-      <h3>{subtitle}</h3>
-      <h3>Authors : {authors}</h3>
-      <h3>
+    <article className={`book-details ${isOnSaleClass(isOnSale)}`}>
+      <h2 className="book-title">{title}</h2>
+      <h3 className="book-authors">Authors : {authors}</h3>
+      <h3 className="book-subtitle">{subtitle}</h3>
+      <h3 className="book-content">Description : {description}</h3>
+      <h3 className="book-date">
         Released at : {publishedDate} ({publishedDateComment()})
       </h3>
-      <h3>Description : {description}</h3>
-      <h3>
+      <h3 className="book-pages">
         Length : {pageCount} ({pageCountComment()})
       </h3>
-      <h3>Categories : {categories}</h3>
-      <h3>Language : {language}</h3>
+      <h3 className="book-categories">Categories : {categories}</h3>
+      <h3 className="book-language">Language : {language}</h3>
       <img src={thumbnail} alt={title} />
       <h2
-        className={`${priceColorClass(priceAmount)} ${isOnSaleClass(
-          isOnSale
+        className={`book-price ${priceColorClass(
+          priceAmount
         )}`}>
         Price : {price}
       </h2>
       <button onClick={unselectBook}>Back</button>
-    </section>
+    </article>
   )
 }
