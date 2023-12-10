@@ -1,3 +1,5 @@
+import { BookDetails } from './pages/BookDetails.jsx'
+import { About } from './pages/About.jsx'
 import { Home } from './pages/Home.jsx'
 import { BookIndex } from './pages/BookIndex.jsx'
 import { bookService } from './services/book.service.js'
@@ -15,8 +17,9 @@ export function App() {
       </section>
       <main>
         <Home />
-        <section className="about-us-page"></section>
+        <About />
         <BookIndex />
+        <BookDetails />
       </main>
     </React.Fragment>
   )
