@@ -27,10 +27,10 @@ export function App() {
           </a>
         </nav>
       </section>
-      <main>
+      <main className="main-layout">
         {currentPage === 'home' && <Home />}
         {currentPage === 'about' && <About />}
-        {currentPage === 'books' && <BookIndex/>}
+        {currentPage === 'books' && <BookIndex />}
       </main>
     </React.Fragment>
   )
