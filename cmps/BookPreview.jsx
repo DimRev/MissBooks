@@ -1,6 +1,6 @@
 export function BookPreview({ book }) {
   const title = book.title
-  const listPrice = book.listPrice
+  const listPrice = book.listPrice.amount
 
   return (
     <React.Fragment>
