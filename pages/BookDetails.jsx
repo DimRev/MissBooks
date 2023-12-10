@@ -8,7 +8,7 @@ export function BookDetails({ bookId, unselectBook }) {
   }, [])
 
   if (book === null) return <div>Loading...</div>
-  
+
   const title = book.title
   const subtitle = book.subtitle
   const authors = book.authors.join(',')
@@ -19,7 +19,7 @@ export function BookDetails({ bookId, unselectBook }) {
   const thumbnail = book.thumbnail
   const language = book.language
   const isOnSale = book.listPrice.isOnSale
-  
+
   const priceAmount = book.listPrice.amount
   const pricecurrencyCode = book.listPrice.currencyCode
   const priceFormatter = new Intl.NumberFormat('he-IL', {
@@ -28,22 +28,40 @@ export function BookDetails({ bookId, unselectBook }) {
   })
   const price = priceFormatter.format(priceAmount)
 
-  
+  function pageCountComment(pageCount) {
+    if (+pageCount > 500) return 'Serious Reading'
+    if (+pageCount > 200) return 'Descent Reading'
+    return 'Light Reading'
+  }
 
+  function publishedDateComment(publishedDate) {
+    if (+publishedDate > 10) return 'Vintage'
+    return 'New'
+  }
+
+  function priceColor(priceAmount) {
+    console.log(priceAmount);
+    if (+priceAmount > 150) return 'price-red'
+    if (+priceAmount < 20) return 'price-green'
+  }
 
   return (
-  <section className="book-details">
-    <h2>{title}</h2>
-    <h3>{subtitle}</h3>
-    <h3>Authors : {authors}</h3>
-    <h3>Released at : {publishedDate}</h3>
-    <h3>Description : {description}</h3>
-    <h3>Length : {pageCount}</h3>
-    <h3>Categories : {categories}</h3>
-    <h3>Language : {language}</h3>
-    <img src={thumbnail} alt={title}/>
-    <h2>Price : {price}</h2>
-    <button onClick={unselectBook}>Back</button>
-  </section>
+    <section className="book-details">
+      <h2>{title}</h2>
+      <h3>{subtitle}</h3>
+      <h3>Authors : {authors}</h3>
+      <h3>
+        Released at : {publishedDate} ({publishedDateComment()})
+      </h3>
+      <h3>Description : {description}</h3>
+      <h3>
+        Length : {pageCount} ({pageCountComment()})
+      </h3>
+      <h3>Categories : {categories}</h3>
+      <h3>Language : {language}</h3>
+      <img src={thumbnail} alt={title} />
+      <h2 className={priceColor(priceAmount)}>Price : {price}</h2>
+      <button onClick={unselectBook}>Back</button>
+    </section>
   )
 }
