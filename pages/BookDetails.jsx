@@ -39,10 +39,15 @@ export function BookDetails({ bookId, unselectBook }) {
     return 'New'
   }
 
-  function priceColor(priceAmount) {
-    console.log(priceAmount);
+  function priceColorClass(priceAmount) {
     if (+priceAmount > 150) return 'price-red'
     if (+priceAmount < 20) return 'price-green'
+    return ''
+  }
+
+  function isOnSaleClass(isOnSale) {
+    if (isOnSale) return 'on-sale'
+    return ''
   }
 
   return (
@@ -60,7 +65,12 @@ export function BookDetails({ bookId, unselectBook }) {
       <h3>Categories : {categories}</h3>
       <h3>Language : {language}</h3>
       <img src={thumbnail} alt={title} />
-      <h2 className={priceColor(priceAmount)}>Price : {price}</h2>
+      <h2
+        className={`${priceColorClass(priceAmount)} ${isOnSaleClass(
+          isOnSale
+        )}`}>
+        Price : {price}
+      </h2>
       <button onClick={unselectBook}>Back</button>
     </section>
   )

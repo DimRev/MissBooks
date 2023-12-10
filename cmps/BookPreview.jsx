@@ -12,7 +12,6 @@ export function BookPreview({ book }) {
   })
   const price = priceFormatter.format(priceAmount)
 
-  console.log(book)
   return (
     <React.Fragment>
       <h2>{title}</h2>
