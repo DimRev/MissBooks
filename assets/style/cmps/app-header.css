@@ -2,10 +2,29 @@
   background-color: var(--clr1);
   color: var(--clr1bg);
   padding: 1em;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-@media(max-width: 720px) {
+.app-header .pages-nav > *:not(:last-child) {
+  margin-inline-end: 1.6em;
+}
+
+.app-header .pages-nav a:hover {
+  transition: color .3s
+}
+
+.app-header .pages-nav a:hover {
+  color: var(--clr1bg-light);
+}
+
+@media (max-width: 720px) {
   .app-header {
     color: var(--clr2bg);
+  }
+  .app-header a:hover {
+    color: var(--clr2bg-light);
   }
 }
