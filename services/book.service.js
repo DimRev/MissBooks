@@ -2,7 +2,7 @@ import { utilService } from './util.service.js'
 import { storageService } from './async-storage.service.js'
 
 const BOOK_KEY = 'bookDB'
-var gFilterBy = { txt: '', minSpeed: 0 }
+var gFilterBy = { title: '', listPrice: 0 }
 _createBooks()
 
 export const bookService = {
@@ -18,12 +18,12 @@ export const bookService = {
 
 function query() {
   return storageService.query(BOOK_KEY).then((books) => {
-    if (gFilterBy.txt) {
-      const regex = new RegExp(gFilterBy.txt, 'i')
-      books = books.filter((book) => regex.test(book.vendor))
+    if (gFilterBy.title) {
+      const regex = new RegExp(gFilterBy.title, 'i')
+      books = books.filter((book) => regex.test(book.title))
     }
-    if (gFilterBy.minSpeed) {
-      books = books.filter((book) => book.maxSpeed >= gFilterBy.minSpeed)
+    if (gFilterBy.listPrice) {
+      books = books.filter((book) => book.listPrice >= gFilterBy.listPrice)
     }
     return books
   })
@@ -55,9 +55,10 @@ function getFilterBy() {
 }
 
 function setFilterBy(filterBy = {}) {
-  // TODO : setup filter inputs for books
-  // if (filterBy.txt !== undefined) gFilterBy.txt = filterBy.txt
-  // if (filterBy.minSpeed !== undefined) gFilterBy.minSpeed = filterBy.minSpeed
+  // DONE : setup filter inputs for books
+  if (filterBy.title !== undefined) gFilterBy.title = filterBy.title
+  if (filterBy.listPrice !== undefined) gFilterBy.listPrice = filterBy.listPrice
+  console.log(gFilterBy, filterBy)
   return gFilterBy
 }
 
@@ -81,7 +82,7 @@ function _createBooks() {
 }
 
 function _createBook(title, listPrice = 250) {
-  //TODO : change the after changing getEmptyBook data structure change the args of the func
+  //DONE : change the after changing getEmptyBook data structure change the args of the func
   const book = getEmptyBook(title, listPrice)
   book.id = utilService.makeId()
   return book
