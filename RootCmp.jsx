@@ -1,37 +1,27 @@
+import { AppHeader } from './cmps/AppHeader.jsx'
 import { About } from './pages/About.jsx'
 import { Home } from './pages/Home.jsx'
 import { BookIndex } from './pages/BookIndex.jsx'
 import { bookService } from './services/book.service.js'
 
+const Router = ReactRouterDOM.HashRouter
+const { Routes, Route, Navigate } = ReactRouterDOM
 const { useState, useEffect } = React
+
 export function App() {
-  const [currentPage, setCurrentPage] = useState('home')
-
-  function onPageChange(page) {
-    setCurrentPage(page)
-  }
-
   return (
-    <React.Fragment>
-      <section className="app-header">
-        <div className="logo">MissBooks</div>
-        <nav className="pages-nav">
-          <a href="#" onClick={() => onPageChange('home')}>
-            Home
-          </a>
-          <a href="#" onClick={() => onPageChange('about')}>
-            About us
-          </a>
-          <a href="#" onClick={() => onPageChange('books')}>
-            Books
-          </a>
-        </nav>
-      </section>
+    <Router>
+      <AppHeader />
       <main className="main-layout">
-        {currentPage === 'home' && <Home />}
-        {currentPage === 'about' && <About />}
-        {currentPage === 'books' && <BookIndex />}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/book" element={<BookIndex />} />
+        </Routes>
+        {/* {currentPage === 'home' && <Home />} */}
+        {/* {currentPage === 'about' && <About />} */}
+        {/* {currentPage === 'books' && <BookIndex />} */}
       </main>
-    </React.Fragment>
+    </Router>
   )
 }
