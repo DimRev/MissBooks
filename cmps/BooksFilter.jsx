@@ -15,7 +15,6 @@ export function BooksFilter({ filterBy, onSetFilter }) {
   function handleChange({ target }) {
     const field = target.name
     let value = target.value
-
     switch (target.type) {
       case 'number':
       case 'range':
@@ -32,7 +31,7 @@ export function BooksFilter({ filterBy, onSetFilter }) {
 
     setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
   }
-
+  const { title, listPrice } = filterByToEdit
   return (
     <section className="books-filter">
       <h2>Book Filter</h2>
@@ -40,6 +39,7 @@ export function BooksFilter({ filterBy, onSetFilter }) {
         <label htmlFor="title">Title :</label>
         <input
           type="text"
+          value={title}
           placeholder="Search"
           id="title"
           name="title"
@@ -48,9 +48,10 @@ export function BooksFilter({ filterBy, onSetFilter }) {
         <label htmlFor="listPrice">List Price :</label>
         <input
           type="number"
+          value={listPrice || ''}
           placeholder="Search"
           id="listPrice"
-          name="title"
+          name="listPrice"
           onChange={handleChange}
         />
         <button type="submit">Search</button>
