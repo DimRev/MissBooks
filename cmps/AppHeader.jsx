@@ -6,9 +6,9 @@ export function AppHeader() {
       <section>
         <div className="logo">MissBooks</div>
         <nav className="pages-nav">
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/home">Home</NavLink>
           <NavLink to="/about">About</NavLink>
-          <NavLink to="/book">Cars</NavLink>
+          <NavLink to="/book">Books</NavLink>
         </nav>
       </section>
     </header>
