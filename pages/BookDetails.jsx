@@ -1,11 +1,27 @@
 import { bookService } from '../services/book.service.js'
-const { useEffect, useState } = React
 
-export function BookDetails({ bookId, unselectBook }) {
+const { useParams, useNavigate, Link } = ReactRouterDOM
+
+const { useState, useEffect } = React
+
+export function BookDetails() {
   const [book, setBook] = useState(null)
+  const params = useParams()
+  const navigate = useNavigate()
+
   useEffect(() => {
-    bookService.get(bookId).then((book) => setBook(book))
-  }, [])
+    loadBook()
+  }, [params.bookId])
+
+  function loadBook() {
+    bookService
+      .get(params.bookId)
+      .then((book) => setBook(book))
+      .catch((err) => {
+        console.log('err:', err)
+        navigate('/')
+      })
+  }
 
   if (book === null) return <div>Loading...</div>
 
@@ -49,7 +65,6 @@ export function BookDetails({ bookId, unselectBook }) {
     if (isOnSale) return 'sale-book'
     return ''
   }
-
   return (
     <article className={`book-details ${isOnSaleClass(isOnSale)}`}>
       <h2 className="book-title">{title}</h2>
@@ -68,7 +83,7 @@ export function BookDetails({ bookId, unselectBook }) {
       <h2 className={`book-price ${priceColorClass(priceAmount)}`}>
         Price : {price}
       </h2>
-      <button onClick={unselectBook}>Back</button>
+      <button onClick={() => navigate('/book')}>Back</button>
     </article>
   )
 }
