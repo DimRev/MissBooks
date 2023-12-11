@@ -13,7 +13,7 @@ export function BooksFilter({ filterBy, onSetFilter }) {
   }
 
   function handleChange({ target }) {
-    const field = target.id
+    const field = target.name
     let value = target.value
 
     switch (target.type) {
@@ -42,6 +42,7 @@ export function BooksFilter({ filterBy, onSetFilter }) {
           type="text"
           placeholder="Search"
           id="title"
+          name="title"
           onChange={handleChange}
         />
         <label htmlFor="listPrice">List Price :</label>
@@ -49,6 +50,7 @@ export function BooksFilter({ filterBy, onSetFilter }) {
           type="number"
           placeholder="Search"
           id="listPrice"
+          name="title"
           onChange={handleChange}
         />
         <button type="submit">Search</button>
