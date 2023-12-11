@@ -44,8 +44,8 @@
 
 .book-details.sale-book::after {
   position: absolute;
-  top: 7rem;
-  right: 15rem;
+  bottom: 35%;
+  right: 25%;
   z-index: 10;
   content: 'On Sale!';
   font: 1em Impact;
@@ -54,7 +54,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  rotate: -33.33deg;
+  rotate: -13.33deg;
   width: 120px;
   height: 30px;
   background-color: red;
