@@ -1,7 +1,9 @@
 const { useState, useEffect } = React
+const { useNavigate } = ReactRouterDOM
 
 export function BooksFilter({ filterBy, onSetFilter }) {
   const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
+  const navigate = useNavigate()
 
   useEffect(() => {
     onSetFilter(filterByToEdit)
@@ -56,6 +58,7 @@ export function BooksFilter({ filterBy, onSetFilter }) {
         />
         <button type="submit">Search</button>
       </form>
+      <button onClick={() => navigate('/edit')}>Add</button>
     </section>
   )
 }

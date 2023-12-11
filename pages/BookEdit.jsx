@@ -119,6 +119,7 @@ export function BookEdit() {
           Save
         </button>
       </form>
+      <button onClick={()=>{navigate('/book')}}>Back</button>
     </section>
   )
 }
