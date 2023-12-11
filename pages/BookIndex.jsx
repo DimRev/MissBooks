@@ -7,16 +7,11 @@ const { useState, useEffect } = React
 
 export function BookIndex({ onSelectBook }) {
   const [books, setBooks] = useState(null)
-  // const [selectedBookId, setSelectedBookId] = useState(null)
   const [filterBy, setFilterBy] = useState(bookService.getFilterBy())
 
   useEffect(() => {
     bookService.query().then((books) => setBooks(books))
   }, [filterBy])
-
-  // function onSelectBook(bookId) {
-  //   setSelectedBookId(bookId)
-  // }
 
   function onSetFilter(filterFromEdit) {
     setFilterBy(() => {
@@ -31,15 +26,6 @@ export function BookIndex({ onSelectBook }) {
         <BooksFilter filterBy={filterBy} onSetFilter={onSetFilter} />
         {books ? <BooksList books={books} /> : <div>Loading...</div>}
       </React.Fragment>
-
-      {/* {selectedBookId && (
-        <BookDetails
-          bookId={selectedBookId}
-          unselectBook={() => {
-            setSelectedBookId(null)
-          }}
-        />
-      )} */}
     </section>
   )
 }
