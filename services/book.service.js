@@ -383,6 +383,7 @@ export const bookService = {
   getNextBookId,
   getFilterBy,
   setFilterBy,
+  addReview,
 }
 
 function query() {
@@ -430,9 +431,9 @@ function getEmptyBook(
   currencyCode = 'ILS',
   isOnSale = false
 ) {
-  const listPrice = {amount, currencyCode, isOnSale}
+  const listPrice = { amount, currencyCode, isOnSale }
   //DONE : setup data structure of a book & args of the func
-  return { 
+  return {
     title,
     subtitle,
     authors,
@@ -443,7 +444,17 @@ function getEmptyBook(
     thumbnail,
     language,
     listPrice,
-    }
+  }
+}
+
+function addReview(bookId, review) {
+  review.id = utilService.makeId()
+  return storageService.get(BOOK_KEY, bookId).then((book) => {
+    if (book.reviews === undefined) book.reviews = [review]
+    else book.reviews.push(review)
+    save(book)
+    return book
+  })
 }
 
 function getFilterBy() {

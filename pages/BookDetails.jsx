@@ -1,4 +1,5 @@
-import { BookReview } from '../cmps/BookReview.jsx';
+import { BookReviewAdd } from '../cmps/BookReviewAdd.jsx'
+import { BookReview } from '../cmps/BookReview.jsx'
 import { bookService } from '../services/book.service.js'
 
 const { useParams, useNavigate, Link } = ReactRouterDOM
@@ -85,7 +86,8 @@ export function BookDetails() {
         Price : {price}
       </h2>
       <button>Add Review</button>
-      <BookReview book={book}/>
+      <BookReview book={book} />
+      <BookReviewAdd book={book} />
       <button onClick={() => navigate('/book')}>Back</button>
     </article>
   )
