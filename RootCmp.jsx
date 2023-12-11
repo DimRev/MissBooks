@@ -2,11 +2,11 @@ import { AppHeader } from './cmps/AppHeader.jsx'
 import { About } from './pages/About.jsx'
 import { Home } from './pages/Home.jsx'
 import { BookIndex } from './pages/BookIndex.jsx'
+import { BookDetails } from './pages/BookDetails.jsx'
 import { bookService } from './services/book.service.js'
 
 const Router = ReactRouterDOM.HashRouter
 const { Routes, Route, Navigate } = ReactRouterDOM
-const { useState, useEffect } = React
 
 export function App() {
   return (
@@ -14,13 +14,12 @@ export function App() {
       <AppHeader />
       <main className="main-layout">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/book" element={<BookIndex />} />
+          <Route path="/book/:bookId" element={<BookDetails />} />
         </Routes>
-        {/* {currentPage === 'home' && <Home />} */}
-        {/* {currentPage === 'about' && <About />} */}
-        {/* {currentPage === 'books' && <BookIndex />} */}
       </main>
     </Router>
   )
