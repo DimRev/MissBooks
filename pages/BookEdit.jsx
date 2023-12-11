@@ -1,18 +1,33 @@
 import { bookService } from '../services/book.service.js'
 
 const { useState, useEffect } = React
-const { useNavigate } = ReactRouterDOM
+const { useNavigate, useParams } = ReactRouterDOM
 
 export function BookEdit() {
   const [book, setBook] = useState(bookService.getEmptyBook())
   const navigate = useNavigate()
+  const params = useParams()
+
+  useEffect(() => {
+    if (params.bookId) loadBook()
+  }, [params.bookId])
+
+  function loadBook() {
+    bookService
+      .get(params.bookId)
+      .then((book) => setBook(book))
+      .catch((err) => {
+        console.log('err:', err)
+        navigate('/')
+      })
+  }
 
   function onSubmit(ev) {
     ev.preventDefault()
-    bookService.save(book)
-      .then((book) => {
-        console.log(book);
-        navigate('/')
+    bookService
+      .save(book)
+      .then(() => {
+        navigate('/book')
       })
       .catch((err) => {
         console.log(err)
@@ -40,7 +55,6 @@ export function BookEdit() {
     }
     setBook({ ...book, ...currBook })
     setBook((prevBook) => {
-      console.log(prevBook)
       return prevBook
     })
   }
@@ -49,25 +63,25 @@ export function BookEdit() {
     <section className="book-edit">
       <form onSubmit={onSubmit}>
         <label htmlFor="">Title</label>
-        <input onChange={handleChange} type="text" name="title" />
+        <input value={book.title} onChange={handleChange} type="text" name="title" />
 
         <label htmlFor="">Subtitle</label>
-        <input onChange={handleChange} type="text" name="subtitle" />
+        <input value={book.subtitle} onChange={handleChange} type="text" name="subtitle" />
 
         <label htmlFor="">Authors</label>
-        <input onChange={handleChange} type="text" name="authors" />
+        <input value={book.authors.join(',')} onChange={handleChange} type="text" name="authors" />
 
         <label htmlFor="">Published Date</label>
-        <input onChange={handleChange} type="number" name="publishedDate" />
+        <input value={book.publishedDate} onChange={handleChange} type="number" name="publishedDate" />
 
         <label htmlFor="">Description</label>
-        <input onChange={handleChange} type="text" name="description" />
+        <input value={book.description} onChange={handleChange} type="text" name="description" />
 
         <label htmlFor="">Thumbnail</label>
-        <input onChange={handleChange} type="text" name="thumbnail" />
+        <input value={book.thumbnail} onChange={handleChange} type="text" name="thumbnail" />
 
         <label htmlFor="language">Language</label>
-        <select onChange={handleChange} name="language" id="language">
+        <select value={book.language} onChange={handleChange} name="language" id="language">
           <option value="he">Hebrew </option>
           <option value="en">English </option>
           <option value="zh">Mandarin Chinese</option>
@@ -82,10 +96,10 @@ export function BookEdit() {
         </select>
 
         <label htmlFor="">Price</label>
-        <input onChange={handleChange} type="number" name="amount" />
+        <input value={book.listPrice.amount} onChange={handleChange} type="number" name="amount" />
 
         <label htmlFor="currencyCode">Currency</label>
-        <select onChange={handleChange} name="currencyCode" id="currencyCode">
+        <select value={book.listPrice.currencyCode} onChange={handleChange} name="currencyCode" id="currencyCode">
           <option value="ILS">ILS - ₪</option>
           <option value="EUR">EUR - €</option>
           <option value="USD">USD - $</option>
@@ -100,7 +114,7 @@ export function BookEdit() {
         </select>
 
         <label htmlFor="">Sale</label>
-        <input onChange={handleChange} type="checkbox" name="isOnSale" />
+        <input checked={book.listPrice.isOnSale} onChange={handleChange} type="checkbox" name="isOnSale" />
         <button
           type="submit"
           disabled={
@@ -119,7 +133,12 @@ export function BookEdit() {
           Save
         </button>
       </form>
-      <button onClick={()=>{navigate('/book')}}>Back</button>
+      <button
+        onClick={() => {
+          navigate('/book')
+        }}>
+        Back
+      </button>
     </section>
   )
 }

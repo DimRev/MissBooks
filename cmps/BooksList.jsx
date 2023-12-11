@@ -13,6 +13,9 @@ export function BooksList({ books }) {
             <button onClick={() => navigate(`/book/${book.id}`)}>
               Details
             </button>
+            <button onClick={() => navigate(`/edit/${book.id}`)}>
+              Edit Book
+            </button>
           </li>
         )
       })}
