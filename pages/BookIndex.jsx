@@ -12,15 +12,16 @@ export function BookIndex({ onSelectBook }) {
 
   useEffect(() => {
     bookService.query().then((books) => setBooks(books))
-  }, [])
+  }, [filterBy])
 
   function onSelectBook(bookId) {
     setSelectedBookId(bookId)
   }
   function onSetFilter(filterFromEdit) {
-    setFilterBy(filterFromEdit)
-    bookService.setFilterBy(filterBy)
-    bookService.query().then((books) => setBooks(books))
+    setFilterBy(() => {
+      bookService.setFilterBy(filterFromEdit)
+      return filterFromEdit
+    })
   }
 
   return (
