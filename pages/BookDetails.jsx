@@ -1,3 +1,4 @@
+import { BookReview } from '../cmps/BookReview.jsx';
 import { bookService } from '../services/book.service.js'
 
 const { useParams, useNavigate, Link } = ReactRouterDOM
@@ -83,6 +84,8 @@ export function BookDetails() {
       <h2 className={`book-price ${priceColorClass(priceAmount)}`}>
         Price : {price}
       </h2>
+      <button>Add Review</button>
+      <BookReview book={book}/>
       <button onClick={() => navigate('/book')}>Back</button>
     </article>
   )
