@@ -5,7 +5,7 @@ const { useEffect } = React
 export function Home() {
   return (
     <section className="home-page">
-      <h2>Home Sweet Home</h2>
+      <h2>Miss Books</h2>
       <UserPreview />
     </section>
   )
