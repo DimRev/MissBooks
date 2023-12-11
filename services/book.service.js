@@ -416,9 +416,34 @@ function save(book) {
   }
 }
 
-function getEmptyBook(title = '', listPrice = 0) {
+function getEmptyBook(
+  title = '',
+  subtitle = '',
+  authors = [],
+  publishedDate = new Date().getFullYear(),
+  description = 'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidid',
+  pageCount = 30,
+  categories = [],
+  thumbnail = '',
+  language = 'he',
+  amount = 0,
+  currencyCode = 'ILS',
+  isOnSale = false
+) {
+  const listPrice = {amount, currencyCode, isOnSale}
   //DONE : setup data structure of a book & args of the func
-  return { id: '', title, listPrice }
+  return { 
+    title,
+    subtitle,
+    authors,
+    publishedDate,
+    description,
+    pageCount,
+    categories,
+    thumbnail,
+    language,
+    listPrice,
+    }
 }
 
 function getFilterBy() {

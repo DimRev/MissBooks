@@ -1,0 +1,23 @@
+.book-edit form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: flex-end;
+
+  gap: .2em 2em;
+  margin-block-start: .6rem;
+}
+
+.book-edit form label {
+  margin-inline-end: 3em;
+}
+
+.book-edit form :is(input,select) {
+  width: 50%;
+  justify-self: flex-start;
+}
+
+.book-edit form button {
+  justify-self: center;
+  width: 25%;
+  grid-column: 1/-1;
+}
