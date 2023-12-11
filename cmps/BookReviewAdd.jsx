@@ -2,7 +2,7 @@ const { useState } = React
 
 import { bookService } from '../services/book.service.js'
 
-export function BookReviewAdd({ book }) {
+export function BookReviewAdd({ book , updateReviews}) {
   const currentDate = new Date()
 
   // Format the date to "YYYY-MM-DD"
@@ -17,13 +17,14 @@ export function BookReviewAdd({ book }) {
     ev.preventDefault()
     bookService
       .addReview(book.id, review)
-      .then(() =>
+      .then((book) => {
         setReview({
           fullname: '',
           rating: 0,
           readAt: formattedDate,
         })
-      )
+        return book
+      }).then((book) => updateReviews(book))
       .catch((err) => {
         console.log('err:', err)
       })

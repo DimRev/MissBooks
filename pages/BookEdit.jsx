@@ -42,8 +42,8 @@ export function BookEdit() {
     if (ev.target.type === 'checkbox') value = ev.target.checked
 
     const currBook = { ...book }
-    if (field === 'authors') {
-      currBook.authors = [value]
+    if (field === 'authors0'||field === 'authors1'||field === 'authors2') {
+      currBook.authors[+field.charAt(7)] = [value]
     } else if (
       field === 'amount' ||
       field === 'currencyCode' ||
@@ -69,7 +69,9 @@ export function BookEdit() {
         <input value={book.subtitle} onChange={handleChange} type="text" name="subtitle" />
 
         <label htmlFor="">Authors</label>
-        <input value={book.authors.join(',')} onChange={handleChange} type="text" name="authors" />
+        <input value={book.authors[0]} onChange={handleChange} type="text" name="authors0" />
+        <input value={book.authors[1] || ''} onChange={handleChange} type="text" name="authors1" />
+        <input value={book.authors[2] || ''} onChange={handleChange} type="text" name="authors2" />
 
         <label htmlFor="">Published Date</label>
         <input value={book.publishedDate} onChange={handleChange} type="number" name="publishedDate" />

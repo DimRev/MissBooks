@@ -384,6 +384,7 @@ export const bookService = {
   getFilterBy,
   setFilterBy,
   addReview,
+  removeReview,
 }
 
 function query() {
@@ -452,6 +453,14 @@ function addReview(bookId, review) {
   return storageService.get(BOOK_KEY, bookId).then((book) => {
     if (book.reviews === undefined) book.reviews = [review]
     else book.reviews.push(review)
+    save(book)
+    return book
+  })
+}
+
+function removeReview(bookId, reviewId) {
+  return storageService.get(BOOK_KEY, bookId).then((book) => {
+    book.reviews = book.reviews.filter((review) => review.id!== reviewId)
     save(book)
     return book
   })

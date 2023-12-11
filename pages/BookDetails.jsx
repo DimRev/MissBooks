@@ -15,6 +15,10 @@ export function BookDetails() {
     loadBook()
   }, [params.bookId])
 
+  function updateReviews(book) {
+    setBook(book)
+  }
+
   function loadBook() {
     bookService
       .get(params.bookId)
@@ -86,8 +90,8 @@ export function BookDetails() {
         Price : {price}
       </h2>
       <button>Add Review</button>
-      <BookReview book={book} />
-      <BookReviewAdd book={book} />
+      <BookReview book={book} updateReviews={updateReviews} />
+      <BookReviewAdd book={book} updateReviews={updateReviews} />
       <button onClick={() => navigate('/book')}>Back</button>
     </article>
   )
