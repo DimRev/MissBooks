@@ -1239,12 +1239,12 @@ function removeReview(bookId, reviewId) {
 
 // Google Book Functions
 
-function queryGoogleBooks(searchParam) {
+function queryGoogleBooks(searchBook) {
   const axios = require('axios')
 
   return axios
     .get(
-      `https://www.googleapis.com/books/v1/volumes?printType=books&q=${searchParam}#`
+      `https://www.googleapis.com/books/v1/volumes?printType=books&q=${searchBook}#`
     )
     .then(function (response) {
       return response.data
@@ -1273,6 +1273,10 @@ function formatGoogleBook(googleBook) {
     currencyCode: 'ILS',
     isOnSale: false,
   }
+
+  const { title, textSnippet } = googleBook.volumeInfo
+  console.log(title, textSnippet)
+  
   const formatedBook = {
     ...getEmptyBook(),
     googleId: googleBook.id,

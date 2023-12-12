@@ -21,10 +21,8 @@ export function BookIndex() {
     })
   }
 
-  function getGoogleBooks(searchParam) {
-    console.log('getGoogleBooks', searchParam)
-    bookService.queryGoogleBooks(searchParam).then((googleBooks) => {
-      console.log('BookAdd.jsx - queryGoogleBooks()', googleBooks.items)
+  function getGoogleBooks(searchBook) {
+    bookService.queryGoogleBooks(searchBook).then((googleBooks) => {
       setGoogleBooks(googleBooks.items)
     })
     bookService.query().then((books) => {
@@ -35,7 +33,7 @@ export function BookIndex() {
   function addGoogleBook(googleBook) {
     console.log('BookAdd.jsx - addGoogleBook()', googleBook)
     bookService.addGoogleBook(googleBook).then((book) => {
-      setBooks((prevBooks) => [...prevBooks, book])
+      setBooks((prevBooks) => [book, ...prevBooks])
     })
   }
 

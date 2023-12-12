@@ -1,16 +1,16 @@
 const { useState } = React
 
 export function BookAdd({ googleBooks, addGoogleBook, getGoogleBooks }) {
-  const [searchParam, setSearchParam] = useState('')
+  const [searchBook, setSearchBooks] = useState('')
 
   function onSubmitHandle(ev) {
     ev.preventDefault()
-    getGoogleBooks(searchParam)
+    getGoogleBooks(searchBook)
   }
 
   function onBookSearchParam(ev) {
     const value = ev.target.value
-    setSearchParam(value)
+    setSearchBooks(value)
   }
 
   return (

@@ -31,18 +31,24 @@ export function BookDetails() {
 
   if (book === null) return <div>Loading...</div>
 
-  const title = book.title
-  const subtitle = book.subtitle
-  const authors = book.authors.join(',')
-  const publishedDate = book.publishedDate
-  const description = book.description
-  const pageCount = book.pageCount
-  const categories = book.categories.join(',')
-  const thumbnail = book.thumbnail
-  const language = book.language
-  const isOnSale = book.listPrice.isOnSale
-  const priceAmount = book.listPrice.amount
-  const pricecurrencyCode = book.listPrice.currencyCode
+  const {
+    title,
+    subtitle,
+    authors,
+    publishedDate,
+    description,
+    pageCount,
+    categories,
+    thumbnail,
+    language,
+    listPrice,
+  } = book
+  
+  const {
+    amount: priceAmount,
+    isOnSale,
+    currencyCode: pricecurrencyCode,
+  } = listPrice
 
   function LongLanguageName() {
     console.log(language)
