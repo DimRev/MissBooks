@@ -110,7 +110,6 @@ export function BookDetails() {
       <h2 className={`book-price ${priceColorClass()}`}>
         {`Price : ${priceList()}`}
       </h2>
-      <button>Add Review</button>
       <BookReview book={book} updateReviews={updateReviews} />
       <BookReviewAdd book={book} updateReviews={updateReviews} />
       <button onClick={() => navigate('/book')}>Back</button>
