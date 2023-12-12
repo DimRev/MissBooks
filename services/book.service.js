@@ -1239,8 +1239,19 @@ function removeReview(bookId, reviewId) {
 
 // Google Book Functions
 
-function queryGoogleBooks() {
-  return Promise.resolve(googleBooks)
+function queryGoogleBooks(searchParam) {
+  const axios = require('axios')
+
+  return axios
+    .get(
+      `https://www.googleapis.com/books/v1/volumes?printType=books&q=${searchParam}#`
+    )
+    .then(function (response) {
+      return response.data
+    })
+    .catch(function (error) {
+      console.log(error)
+    })
 }
 
 function addGoogleBook(googleBook) {

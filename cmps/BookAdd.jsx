@@ -1,9 +1,28 @@
+const { useState } = React
+
 export function BookAdd({ googleBooks, addGoogleBook, getGoogleBooks }) {
-  
+  const [searchParam, setSearchParam] = useState('')
+
+  function onSubmitHandle(ev) {
+    ev.preventDefault()
+    getGoogleBooks(searchParam)
+  }
+
+  function onBookSearchParam(ev) {
+    const value = ev.target.value
+    setSearchParam(value)
+  }
 
   return (
     <section className="book-add">
-      <button onClick={getGoogleBooks}>Add Google Books</button>
+      <form onSubmit={onSubmitHandle}>
+        <input
+          type="text"
+          onChange={onBookSearchParam}
+          name="book-search-param"
+        />
+        <button>Add Google Books</button>
+      </form>
       <ul>
         {googleBooks &&
           googleBooks.map((googleBook) => (
