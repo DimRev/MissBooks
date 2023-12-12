@@ -1,4 +1,3 @@
-import { BookDetails } from '../pages/BookDetails.jsx'
 import { BooksList } from '../cmps/BooksList.jsx'
 import { BooksFilter } from '../cmps/BooksFilter.jsx'
 import { bookService } from '../services/book.service.js'
