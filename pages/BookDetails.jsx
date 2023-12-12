@@ -41,17 +41,33 @@ export function BookDetails() {
   const thumbnail = book.thumbnail
   const language = book.language
   const isOnSale = book.listPrice.isOnSale
-
   const priceAmount = book.listPrice.amount
   const pricecurrencyCode = book.listPrice.currencyCode
-  const priceFormatter = new Intl.NumberFormat('he-IL', {
-    style: 'currency',
-    currency: pricecurrencyCode,
-  })
-  const price = priceFormatter.format(priceAmount)
+
+  function LongLanguageName() {
+    console.log(language);
+    const languageMap = {
+      en: 'English',
+      es: 'Spanish',
+      fr: 'French',
+      de: 'German',
+      he: 'Hebrew',
+      sp: 'Spanish',
+      // Add more languages as needed
+    };
+  
+    return languageMap[language] || 'Unknown Language';
+  }
+
+  function priceList() {
+    const priceFormatter = new Intl.NumberFormat('he-IL', {
+      style: 'currency',
+      currency: pricecurrencyCode,
+    })
+    return priceFormatter.format(priceAmount)
+  }
 
   function pageCountComment() {
-    console.log(pageCount);
     if (+pageCount > 500) return 'Serious Reading'
     if (+pageCount > 200) return 'Descent Reading'
     return 'Light Reading'
@@ -59,7 +75,7 @@ export function BookDetails() {
 
   function publishedDateComment() {
     const currYear = new Date().getFullYear()
-    const yearDiff = currYear - (+publishedDate)
+    const yearDiff = currYear - +publishedDate
     if (yearDiff > 10) return 'Vintage'
     return 'New'
   }
@@ -81,16 +97,16 @@ export function BookDetails() {
       <h3 className="book-subtitle">{subtitle}</h3>
       <h3 className="book-content">Description : {description}</h3>
       <h3 className="book-date">
-        Released at : {publishedDate} ({publishedDateComment()})
+        {`Released at : ${publishedDate} (${publishedDateComment()})`}
       </h3>
       <h3 className="book-pages">
-        Length : {pageCount} ({pageCountComment()})
+        {`Length : ${pageCount} (${pageCountComment()})`}
       </h3>
       <h3 className="book-categories">Categories : {categories}</h3>
-      <h3 className="book-language">Language : {language}</h3>
+      <h3 className="book-language">{`Language : ${LongLanguageName()}`}</h3>
       <img src={thumbnail} alt={title} />
       <h2 className={`book-price ${priceColorClass()}`}>
-        Price : {price}
+        {`Price : ${priceList()}`}
       </h2>
       <button>Add Review</button>
       <BookReview book={book} updateReviews={updateReviews} />
