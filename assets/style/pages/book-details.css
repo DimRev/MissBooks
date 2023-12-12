@@ -1,3 +1,7 @@
+.book-img {
+  position: relative;
+}
+
 .book-img.sale-book::after {
   position: absolute;
   top: 50%;
