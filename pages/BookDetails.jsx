@@ -50,29 +50,32 @@ export function BookDetails() {
   })
   const price = priceFormatter.format(priceAmount)
 
-  function pageCountComment(pageCount) {
+  function pageCountComment() {
+    console.log(pageCount);
     if (+pageCount > 500) return 'Serious Reading'
     if (+pageCount > 200) return 'Descent Reading'
     return 'Light Reading'
   }
 
-  function publishedDateComment(publishedDate) {
-    if (+publishedDate > 10) return 'Vintage'
+  function publishedDateComment() {
+    const currYear = new Date().getFullYear()
+    const yearDiff = currYear - (+publishedDate)
+    if (yearDiff > 10) return 'Vintage'
     return 'New'
   }
 
-  function priceColorClass(priceAmount) {
+  function priceColorClass() {
     if (+priceAmount > 150) return 'price-red'
     if (+priceAmount < 20) return 'price-green'
     return ''
   }
 
-  function isOnSaleClass(isOnSale) {
+  function isOnSaleClass() {
     if (isOnSale) return 'sale-book'
     return ''
   }
   return (
-    <article className={`book-details ${isOnSaleClass(isOnSale)}`}>
+    <article className={`book-details ${isOnSaleClass()}`}>
       <h2 className="book-title">{title}</h2>
       <h3 className="book-authors">Authors : {authors}</h3>
       <h3 className="book-subtitle">{subtitle}</h3>
@@ -86,7 +89,7 @@ export function BookDetails() {
       <h3 className="book-categories">Categories : {categories}</h3>
       <h3 className="book-language">Language : {language}</h3>
       <img src={thumbnail} alt={title} />
-      <h2 className={`book-price ${priceColorClass(priceAmount)}`}>
+      <h2 className={`book-price ${priceColorClass()}`}>
         Price : {price}
       </h2>
       <button>Add Review</button>
