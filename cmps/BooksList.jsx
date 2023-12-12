@@ -9,13 +9,14 @@ export function BooksList({ books }) {
       {books.map((book) => {
         return (
           <li key={book.id}>
-            <BookPreview book={book} />
-            <button onClick={() => navigate(`/book/${book.id}`)}>
-              Details
-            </button>
-            <button onClick={() => navigate(`/edit/${book.id}`)}>
-              Edit Book
-            </button>
+            <BookPreview book={book}>
+              <button onClick={() => navigate(`/book/${book.id}`)}>
+                Details
+              </button>
+              <button onClick={() => navigate(`/edit/${book.id}`)}>
+                Edit Book
+              </button>
+            </BookPreview>
           </li>
         )
       })}

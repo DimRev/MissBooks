@@ -1,4 +1,4 @@
-export function BookPreview({ book }) {
+export function BookPreview({ book, children }) {
   const title = book.title
   const authors = book.authors.join(',')
   const publishedDate = book.publishedDate
@@ -30,6 +30,7 @@ export function BookPreview({ book }) {
       <h2 className="book-date">{publishedDate}</h2>
       <h2 className="book-price">{getFormattedPrice()}</h2>
       <img src={thumbnail} alt="test" />
+      {children}
     </article>
   )
 }

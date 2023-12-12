@@ -58,7 +58,6 @@ export function BooksFilter({ filterBy, onSetFilter }) {
         />
         <button type="submit">Search</button>
       </form>
-      <button onClick={() => navigate('/edit')}>Add</button>
     </section>
   )
 }

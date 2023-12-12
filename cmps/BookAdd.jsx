@@ -21,7 +21,7 @@ export function BookAdd({ googleBooks, addGoogleBook, getGoogleBooks }) {
           onChange={onBookSearchParam}
           name="book-search-param"
         />
-        <button>Add Google Books</button>
+        <button>Search Google Books</button>
       </form>
       <ul>
         {googleBooks &&
