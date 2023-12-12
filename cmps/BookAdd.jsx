@@ -1,6 +1,11 @@
 const { useState } = React
 
-export function BookAdd({ googleBooks, addGoogleBook, getGoogleBooks }) {
+export function BookAdd({
+  googleBooks,
+  setGoogleBooks,
+  addGoogleBook,
+  getGoogleBooks,
+}) {
   const [searchBook, setSearchBooks] = useState('')
 
   function onSubmitHandle(ev) {
@@ -11,6 +16,11 @@ export function BookAdd({ googleBooks, addGoogleBook, getGoogleBooks }) {
   function onBookSearchParam(ev) {
     const value = ev.target.value
     setSearchBooks(value)
+  }
+
+  function onAddBook(googleBook) {
+    addGoogleBook(googleBook)
+    setGoogleBooks(null)
   }
 
   return (
@@ -27,7 +37,12 @@ export function BookAdd({ googleBooks, addGoogleBook, getGoogleBooks }) {
         {googleBooks &&
           googleBooks.map((googleBook) => (
             <li key={googleBook.id}>
-              <button onClick={() => addGoogleBook(googleBook)}>+</button>
+              <button
+                onClick={() => {
+                  onAddBook(googleBook)
+                }}>
+                +
+              </button>
               {googleBook.volumeInfo.title}
             </li>
           ))}

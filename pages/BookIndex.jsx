@@ -43,6 +43,7 @@ export function BookIndex() {
         <BooksFilter filterBy={filterBy} onSetFilter={onSetFilter} />
         <BookAdd
           googleBooks={googleBooks}
+          setGoogleBooks={setGoogleBooks}
           getGoogleBooks={getGoogleBooks}
           addGoogleBook={addGoogleBook}
         />
