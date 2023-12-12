@@ -45,7 +45,7 @@ export function BookDetails() {
   const pricecurrencyCode = book.listPrice.currencyCode
 
   function LongLanguageName() {
-    console.log(language);
+    console.log(language)
     const languageMap = {
       en: 'English',
       es: 'Spanish',
@@ -54,9 +54,9 @@ export function BookDetails() {
       he: 'Hebrew',
       sp: 'Spanish',
       // Add more languages as needed
-    };
-  
-    return languageMap[language] || 'Unknown Language';
+    }
+
+    return languageMap[language] || 'Unknown Language'
   }
 
   function priceList() {
@@ -104,7 +104,9 @@ export function BookDetails() {
       </h3>
       <h3 className="book-categories">Categories : {categories}</h3>
       <h3 className="book-language">{`Language : ${LongLanguageName()}`}</h3>
-      <img src={thumbnail} alt={title} />
+      <div className={`book-img ${isOnSaleClass()}`}>
+        <img src={thumbnail} alt={title} />
+      </div>
       <h2 className={`book-price ${priceColorClass()}`}>
         {`Price : ${priceList()}`}
       </h2>

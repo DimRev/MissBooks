@@ -3,14 +3,15 @@
 
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-
   overflow: hidden;
 
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  box-shadow: 0px 60px 5px 4px rgba(0, 0, 0, 0.1);
+  padding-block-end: 1.5em;
+  border-radius: 15px;
 
   transition: scale 0.3s ease-in-out;
+
+  border: 1px solid black !important;
+  box-shadow: 1px 1px 5px 3px rgba(0, 0, 0, .5);
 }
 
 .book-preview:hover {
@@ -20,6 +21,11 @@
 
 .book-preview :is(img, .book-title, .book-authors) {
   grid-column: 1/-1;
+  place-self: center;
+}
+
+.book-preview img {
+  height: 200px;
 }
 
 .book-preview h2 {
@@ -75,6 +81,7 @@
 }
 
 .books-list button {
-  width: 100%;
+  grid-column: span 2;
+  width: 80%;
   margin-inline: auto;
 }
